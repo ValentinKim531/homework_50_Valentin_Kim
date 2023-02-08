@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Article</title>
+</head>
+<body>
+    <h1>Article</h1>
+    {% csrf_token %}
+    <p>Title: {{ action }}</p>
+    <p>Name: {{ text }}</p>
+    <p>Title: {{ age }}</p>
+    <p>Title: {{ happyness_level }}</p>
+    <p>Title: {{ satiety }}</p>
+</body>
+</html>

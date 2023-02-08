@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Информация</title>
+</head>
+<body>
+<div class="container">
+    <div class="block">
+        {% csrf_token %}
+        <div class="left">
+            {% if happyness_level < 15 %}
+                <img src="{% static "IMG/cat.jpg" %}" width="300" height="150"" alt="cat">
+            {% elif happyness_level >= 15 and happyness_level < 25 %}
+                <img src="{% static "IMG/happy_cat.jpg" %}" width="300" height="150"" alt="cat">
+            {% elif happyness_level >= 25 %}
+                <img src="{% static "IMG/very_happy_cat.jpg" %}" width="300" height="150"" alt="cat">
+            {% endif %}
+        </div>
+        <div class="right">
+            <dl>
+                <dd>Кот - {{ text }}</dd>
+                <dd>Возраст - {{ age }} год</dd>
+                <dd>Уровень счастья - {{ happyness_level }}</dd>
+                <dd>Уровень сытости - {{ satiety }}</dd>
+            </dl>
+        </div>
+        <div class="row">
+            <form action="/cat_stats" method="post">
+                {% csrf_token %}
+                <p><select name="action">
+                    <option selected="selected" disabled>Выберите действие</option>
+                    <option value="play">поиграть с котом</option>
+                    <option value="feed">покормить кота</option>
+                    <option value="sleep">уложить спать кота</option>
+                </select></p>
+                <p><input type="submit" value="подтвердить"></p>
+        </div>
+    </div>
+</body>
+</html>
